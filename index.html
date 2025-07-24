@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BMW Counter</title>
+  <title>Czekadło na BMW dla Rafalola</title>
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -50,11 +50,11 @@
   </style>
 </head>
 <body>
-  <h1>BMW Counter</h1>
+  <h1>Czekadło na BMW dla Rafalola</h1>
   <div id="days">0</div>
   <button id="addDay">+1 dzień</button>
   <button id="reset">Resetuj</button>
-  <div id="text">Czekasz na BMW już 0 dni — cierpliwość się opłaci!</div>
+  <div id="text">Czekasz na BMW już 0 dni — cierpliwość Rafalola się opłaci!</div>
 
   <script>
     const daysEl = document.getElementById("days");
@@ -62,12 +62,11 @@
     const addDayBtn = document.getElementById("addDay");
     const resetBtn = document.getElementById("reset");
 
-    // Pobierz dni z localStorage lub ustaw na 0
     let days = parseInt(localStorage.getItem("bmwDays")) || 0;
 
     function updateDisplay() {
       daysEl.textContent = days;
-      textEl.textContent = `Czekasz na BMW już ${days} ${days === 1 ? "dzień" : "dni"} — cierpliwość się opłaci!`;
+      textEl.textContent = `Czekasz na BMW już ${days} ${days === 1 ? "dzień" : "dni"} — cierpliwość Rafalola się opłaci!`;
     }
 
     addDayBtn.addEventListener("click", () => {
@@ -84,7 +83,6 @@
       }
     });
 
-    // Inicjalne wyświetlenie
     updateDisplay();
   </script>
 </body>
