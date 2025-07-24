@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BMW Counter</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #222;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2em;
+    }
+    #days {
+      font-size: 4rem;
+      margin: 0.2em 0;
+      color: #0070c0;
+    }
+    button {
+      font-size: 1.5rem;
+      margin: 0.5em;
+      padding: 0.5em 1.5em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #0070c0;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005999;
+    }
+    #text {
+      font-size: 1.2rem;
+      margin-top: 1em;
+      font-style: italic;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>BMW Counter</h1>
+  <div id="days">0</div>
+  <button id="addDay">+1 dzień</button>
+  <button id="reset">Resetuj</button>
+  <div id="text">Czekasz na BMW już 0 dni — cierpliwość się opłaci!</div>
+
+  <script>
+    const daysEl = document.getElementById("days");
+    const textEl = document.getElementById("text");
+    const addDayBtn = document.getElementById("addDay");
+    const resetBtn = document.getElementById("reset");
+
+    // Pobierz dni z localStorage lub ustaw na 0
+    let days = parseInt(localStorage.getItem("bmwDays")) || 0;
+
+    function updateDisplay() {
+      daysEl.textContent = days;
+      textEl.textContent = `Czekasz na BMW już ${days} ${days === 1 ? "dzień" : "dni"} — cierpliwość się opłaci!`;
+    }
+
+    addDayBtn.addEventListener("click", () => {
+      days++;
+      localStorage.setItem("bmwDays", days);
+      updateDisplay();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      if (confirm("Na pewno chcesz zresetować licznik?")) {
+        days = 0;
+        localStorage.setItem("bmwDays", days);
+        updateDisplay();
+      }
+    });
+
+    // Inicjalne wyświetlenie
+    updateDisplay();
+  </script>
+</body>
+</html>
